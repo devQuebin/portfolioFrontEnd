@@ -1,0 +1,20 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { user } from '../model/user.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  URL='http://localhost:8080/user/';
+
+  constructor(private http: HttpClient) { }
+
+  public getUser(): Observable<user>{
+    return this.http.get<user>(this.URL+'id/1');
+  }
+  public updateUser(user: user): Observable<user>{
+    return this.http.put<user>(this.URL+'update',user);
+  }
+}

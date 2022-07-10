@@ -14,34 +14,34 @@
                   <p>{{educacion.fechaEdu}}</p>
               </div>
               <div class="col">
-                <a
-                (click)="onOpenModal('edit', educacion)"
-                class="btn btn-primary tooltips"
-                data-placement="top"
-                data-toggle="tooltip"
-                data-original-title="Edit"                
-                ><i class="fa fa-pencil"></i>
-                </a>
-                <a
-                (click)="onOpenModal('delete', educacion)"
-                class="btn btn-secondary tooltips"
-                data-placement="top"
-                data-toggle="tooltip"
-                data-original-title="Delete"                
-                ><i class="fa fa-times"></i>
-                </a>
+                <button type="button"
+                class="btn btn-primary" 
+                data-bs-toggle="modal" 
+                data-bs-target="#editEducacionModal" 
+                >
+                Editar
+                </button>               
+                <button type="button"
+                class="btn btn-secondary" 
+                data-bs-toggle="modal" 
+                data-bs-target="#deleteEducacionModal" 
+                >
+                Borrar
+                </button>
               </div>
           </div>
           </div>        
      </section>
     </div>
-
+<!--boton a;adir-->
     <div class="text-center">
       <button type="button"
       class="btn btn-primary" 
       data-bs-toggle="modal" 
       data-bs-target="#addEducacionModal" 
-      >Añadir Educación</button>
+      >
+      Añadir Educación
+    </button>
     </div>
 
     <!-- Modal aniadir edu-->
@@ -56,15 +56,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addEducacionModalLabel">Añadir educación</h5>
-                    <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="close"
-                    >
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="addEducacionModalLabel">Añadir educación</h5>                    
                 </div>
                 <div class="modal-body">
                     <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
@@ -145,22 +137,14 @@
     aria-labelledby="editEducacionModalLabel"
     aria-hidden="true"
     >
-
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" 
-                    id="updateEducacionModalLabel"
+                    <h5 
+                    class="modal-title" 
+                    id="editEducacionModalLabel"
                     >
-                    Editar educación {{editEducacion?.tituloEdu}}</h5>
-                    <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="close"
-                    >
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                    Editar educación {{editEducacion?.tituloEdu}}</h5>                    
                 </div>
                 <div class="modal-body">
                     <form #editForm="ngForm">
@@ -174,15 +158,16 @@
                             id="tituloEdu"
                             aria-describedby="emailHelp"
                             placeholder="Titulo"
-                            >
+                            />
                         </div>
                         <input
-                        type="text"
+                        type="hidden"
                         ngModel="{{editEducacion?.idEdu}}"
                         name="idEdu"
                         class="form-control"
                         id="idEdu"
-                        placeholder="">
+                        placeholder=""
+                        />
                         <div class="form-group">
                             <label for="descEdu">Descripción</label>
                             <input 
@@ -192,41 +177,38 @@
                             class="form-control"
                             id="descEdu"
                             placeholder="Descripcion"
-                            >
+                            />
                         </div>
                         <div class="form-group">
                             <label for="fechaEdu">Fecha</label>
                             <input 
                             type="text"
-                            ngModel=" {{editEducacion?.fechaEdu}} "
+                            ngModel="{{editEducacion?.fechaEdu}}"
                             name="fechaEdu"
                             class="form-control"
                             id="fechaEdu"
-                            placeholder="Fecha"
-                            
-                            >
+                            placeholder="Fecha"                            
+                            />
                         </div>
                         <div class="form-group">
                             <label for="imagenEdu">URL Imagen</label>
                             <input 
                             type="text"
-                            ngModel=" {{editEducacion?.imagenEdu}}"
+                            ngModel="{{editEducacion?.imagenEdu}}"
                             name="imagenEdu"
                             class="form-control"
                             id="imagenEdu"
-                            placeholder="URL Imagen"
-                            
-                            >
+                            placeholder="URL Imagen"                            
+                            />
                         </div>
                         <div class="modal-footer">
-                          <button 
-                          type="button" 
-                          id=""
-                          class-dismiss="btn btn-secondary" 
-                          data-bs-dismiss="modal"
-                          >
-                          Cerrar
-                          </button>
+                            <button 
+                            type="button" 
+                            class="btn btn-secondary" 
+                            data-bs-dismiss="modal"
+                            >
+                            Cerrar
+                            </button>
                             <button
                             (click)="onUpdateEducacion(editForm.value)"
                             data-dismiss="modal"
@@ -249,29 +231,20 @@
 <div 
     class="modal fade"
     data-bs-toggle="modal"
-    data-bs-target="#deleteModalLabel"
-    id="addEducacionModal"
+    
+    id="deleteEducacionModal"
     tabindex="-1"
     role="dialog"
     aria-labelledby="deleteEducacionModalLabel"
     aria-hidden="true"
     >
-
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteEducacionModalLabel">Borrar educación</h5>
-                    <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="close"
-                    >
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="deleteEducacionModalLabel">Borrar educación</h5>                    
                 </div>
                 <div class="modal-body">
-                  <p>¿Está seguro de borrar la educación? {{deleteEducacion?.tituloEdu}}?</p>
+                  <p>¿Está seguro de borrar la educación? {{deleteEducacion?.tituloEdu}}</p>
                     
                         <div class="modal-footer">
                           <button 

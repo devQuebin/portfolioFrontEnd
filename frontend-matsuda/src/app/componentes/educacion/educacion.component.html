@@ -13,21 +13,25 @@
                   <p class="h4">{{educacion.descEdu}}</p>
                   <p>{{educacion.fechaEdu}}</p>
               </div>
-              <div class="col">
-                <button type="button"
-                class="btn btn-primary" 
-                data-bs-toggle="modal" 
-                data-bs-target="#editEducacionModal" 
-                >
-                Editar
-                </button>               
-                <button type="button"
-                class="btn btn-secondary" 
-                data-bs-toggle="modal" 
-                data-bs-target="#deleteEducacionModal" 
-                >
-                Borrar
-                </button>
+              <div class="col text-center">
+                <a
+                  
+                  (click)="onOpenModal('edit', educacion)"
+                  class="btn btn-primary tooltips"
+                  data-placement="top"
+                  data-toggle="tooltip"
+                  data-original-title="Edit"
+                  ><i class="fa fa-pencil"></i>
+                </a>
+                <a
+                  
+                  (click)="onOpenModal('delete', educacion)"
+                  class="btn btn-secondary tooltips"
+                  data-placement="top"
+                  data-toggle="tooltip"
+                  data-original-title="Delete"
+                  ><i class="fa fa-times"></i
+                ></a>
               </div>
           </div>
           </div>        
@@ -229,9 +233,7 @@
 <!--delete modal-->
 
 <div 
-    class="modal fade"
-    data-bs-toggle="modal"
-    
+    class="modal fade"   
     id="deleteEducacionModal"
     tabindex="-1"
     role="dialog"
@@ -244,7 +246,7 @@
                     <h5 class="modal-title" id="deleteEducacionModalLabel">Borrar educación</h5>                    
                 </div>
                 <div class="modal-body">
-                  <p>¿Está seguro de borrar la educación? {{deleteEducacion?.tituloEdu}}</p>
+                  <p>¿Está seguro de borrar la educación{{deleteEducacion?.tituloEdu}}?</p>
                     
                         <div class="modal-footer">
                           <button 

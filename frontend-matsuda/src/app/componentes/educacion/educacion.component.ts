@@ -19,19 +19,21 @@ export class EducacionComponent implements OnInit {
   ngOnInit(): void {
     this.getEducacion();
   }
+
   public getEducacion():void{
     this.educacionService.getEducacion().subscribe({
       next:(Response: Educacion[]) =>{
         this.educaciones=Response;
       },
      error:(error:HttpErrorResponse)=>{
-      alert(error.message);
+      console.log('error');
      }
     })
     }
     public onOpenModal(mode:string, educacion?: Educacion):void{
-      const container=document.getElementById('main-container');
+      const container=document.getElementById('modal_container');
       const button=document.createElement('button');
+      button.type = 'button';
       button.style.display='none';
       button.setAttribute('data-toggle', 'modal');
       if(mode==='add'){

@@ -14,30 +14,30 @@
                   <p>{{educacion.fechaEdu}}</p>
               </div>
               <div class="col text-center">
-                <a
+                <button
+                type="button"
+                (click)="onOpenModal ('edit', educacion)"
+                class="button"
+                data-bs-toggle="modal"
+                data-bs-target="#editEducacionModal">
+                <i class="fa-solid fa-pen"></i>
+                </button>
+                <button
+                type="button"
+                (click)="onOpenModal ('delete', educacion)"
+                class="button"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteEducacionModal">
+                <i class="fa fa-times"></i>
+                </button>
                   
-                  (click)="onOpenModal('edit', educacion)"
-                  class="btn btn-primary tooltips"
-                  data-placement="top"
-                  data-toggle="tooltip"
-                  data-original-title="Edit"
-                  ><i class="fa fa-pencil"></i>
-                </a>
-                <a
                   
-                  (click)="onOpenModal('delete', educacion)"
-                  class="btn btn-secondary tooltips"
-                  data-placement="top"
-                  data-toggle="tooltip"
-                  data-original-title="Delete"
-                  ><i class="fa fa-times"></i
-                ></a>
               </div>
           </div>
           </div>        
      </section>
     </div>
-<!--boton a;adir-->
+<!--boton añadir-->
     <div class="text-center">
       <button type="button"
       class="btn btn-primary" 
@@ -121,7 +121,7 @@
                             type="submit"
                             class="btn btn-primary"
                             >
-                            Añadir cambios
+                            Añadir Educación
                             </button>
                         </div>
 
@@ -215,7 +215,7 @@
                             </button>
                             <button
                             (click)="onUpdateEducacion(editForm.value)"
-                            data-dismiss="modal"
+                            data-bs-dismiss="modal"
                             class="btn btn-primary"
                             >
                             Guardar cambios
@@ -259,7 +259,7 @@
                             <button
                             (click)="onDeleteEducacion(deleteEducacion!.idEdu)"
                             class="btn btn-danger"
-                            data-dismiss="modal"
+                            data-bs-dismiss="modal"
                             >
                             Si
                             </button>

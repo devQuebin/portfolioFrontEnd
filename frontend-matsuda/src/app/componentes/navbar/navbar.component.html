@@ -1,7 +1,7 @@
 <!-- NAVBAR -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-       <a href="#" class="navbar-brand">PORTFOLIO</a>
+       <a href="#" class="navbar-brand"><img src="../../../assets/APLogo.png" id="logoap" alt="logoap"></a>
        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#firstNavbar" aria-controls="firstNavbar" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
        </button>
@@ -15,7 +15,10 @@
         <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
       </ul>
       <form class="d-flex">
-        <button class="btn btn-outline-success" type="submit">Login</button>
+        <button 
+        type="button" 
+        class="btn btn-outline-success" 
+        (click)="login()">Login</button>
       </form>
       </div>
      </div>

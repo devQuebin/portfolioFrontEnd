@@ -7,19 +7,51 @@
        </button>
  <!--el boton funciona, abre, pero no cierra-->
      <div class="collapse navbar-collapse" id="firstNavbar">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" href="#perfil">Perfil</a></li>
         <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>       
         <li class="nav-item"><a class="nav-link" href="#educacion">Educacion y Distinciones</a></li>
         <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        <!--<li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>-->
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="https://github.com/devQuebin"
+            target="blank"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="https://www.linkedin.com/in/matsudamkevin/"
+            target="blank"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+        </li>
+        <li  class="nav-item pointer" >
+          <button *ngIf="!logged()" type="button" class="btn btn-outline-success btn-sm"(click)="login()">LOGIN</button>>
+        </li>
+        <li  class="nav-item pointer">
+          <button *ngIf="logged()" type="button" class="btn btn-outline-secondary btn-sm" (click)="onLogout()">LOGOUT</button>>
+        </li>
+
       </ul>
-      <form class="d-flex">
+    <!--  <form class="d-flex">
         <button 
         type="button" 
         class="btn btn-outline-success" 
-        (click)="login()">Login</button>
-      </form>
+        (click)="login()"
+        *ngIf="!logged">Login</button>
+        <button 
+        type="button" 
+        class="btn btn-outline-secondary" 
+        
+        *ngIf="logged">Logout</button>
+
+      </form> -->
       </div>
      </div>
    </nav>

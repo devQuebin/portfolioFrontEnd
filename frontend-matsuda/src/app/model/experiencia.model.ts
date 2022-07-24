@@ -1,4 +1,4 @@
-export interface Educacion{
+export interface Experiencia{
     idExp: number;
     tituloExp: string;
     fechainExp: number;

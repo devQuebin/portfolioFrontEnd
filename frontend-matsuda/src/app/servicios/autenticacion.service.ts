@@ -42,6 +42,6 @@ export class AutenticacionService {
     localStorage.clear();
 
     this.currentUserSubject.next(null);
-    alert('LOGOUT!');
+    alert('Sesion cerrada.');
    }
 }

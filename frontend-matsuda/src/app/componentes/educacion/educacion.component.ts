@@ -2,7 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Educacion } from 'src/app/model/educacion.model';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { EducacionService } from 'src/app/servicios/educacion.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem,} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-educacion',
@@ -11,10 +13,14 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
 })
 export class EducacionComponent implements OnInit {
   public educaciones:Educacion[]=[];
+  public educaciones2 = this.educacionService.getEducacion();
   public editEducacion:Educacion | undefined;
   public deleteEducacion:Educacion | undefined;
 
-  constructor(private educacionService: EducacionService) { }
+  constructor(private educacionService: EducacionService,
+              public autenticacionService: AutenticacionService) { }
+
+  isloged = () => this.autenticacionService.loggedIn();
 
   ngOnInit(): void {
     this.getEducacion();
@@ -89,4 +95,25 @@ export class EducacionComponent implements OnInit {
 
     })
   }
+
+  onDrop(event: CdkDragDrop<Educacion[]>) {
+    if (this.autenticacionService.loggedIn()) {
+      if (event.previousContainer === event.container) {
+        moveItemInArray(
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex
+        );
+      } else {
+        transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex
+        );
+      }
+    }
+  }
+  
 }
+  

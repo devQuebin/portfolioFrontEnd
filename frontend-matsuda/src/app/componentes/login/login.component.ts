@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   
   onEnviar(event: Event){
     if (this.form.invalid){
-      alert ('Mal logueado');
+      alert ('Usuario y contraseña mal ingresados.');
       return;
     }
     event.preventDefault;

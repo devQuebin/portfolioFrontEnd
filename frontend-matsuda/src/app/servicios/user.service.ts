@@ -7,12 +7,12 @@ import { user } from '../model/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  URL='http://localhost:8080/infous/';
+  URL='http://localhost:8080/api/info/';
 
   constructor(private http: HttpClient) { }
 
   public getUser(): Observable<user>{
-    return this.http.get<user>(this.URL+`id/1`);
+    return this.http.get<user>(this.URL+`1`);
   }
   public updateUser(user: user): Observable<user>{
     return this.http.put<user>(this.URL+`update`,user);

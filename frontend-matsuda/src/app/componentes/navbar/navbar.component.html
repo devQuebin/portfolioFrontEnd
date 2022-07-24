@@ -1,57 +1,47 @@
 <!-- NAVBAR -->
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-       <a href="#" class="navbar-brand"><img src="../../../assets/APLogo.png" id="logoap" alt="logoap"></a>
-       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#firstNavbar" aria-controls="firstNavbar" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-       </button>
- <!--el boton funciona, abre, pero no cierra-->
-     <div class="collapse navbar-collapse" id="firstNavbar">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="#perfil">Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>       
-        <li class="nav-item"><a class="nav-link" href="#educacion">Educacion y Distinciones</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <!--<li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>-->
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="https://github.com/devQuebin"
-            target="blank"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="https://www.linkedin.com/in/matsudamkevin/"
-            target="blank"
-            ><i class="fa-brands fa-linkedin"></i
-          ></a>
-        </li>
-        <li  class="nav-item pointer" >
-          <button *ngIf="!logged()" type="button" class="btn btn-outline-success btn-sm"(click)="login()">LOGIN</button>>
-        </li>
-        <li  class="nav-item pointer">
-          <button *ngIf="logged()" type="button" class="btn btn-outline-secondary btn-sm" (click)="onLogout()">LOGOUT</button>>
-        </li>
+<nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark">
 
-      </ul>
-    <!--  <form class="d-flex">
-        <button 
-        type="button" 
-        class="btn btn-outline-success" 
-        (click)="login()"
-        *ngIf="!logged">Login</button>
-        <button 
-        type="button" 
-        class="btn btn-outline-secondary" 
-        
-        *ngIf="logged">Logout</button>
+  <a class="navbar-brand" href="#"><img src="../../../assets/APLogo.png" id="logoap" alt="logoap"></a>
 
-      </form> -->
-      </div>
-     </div>
-   </nav>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#firstNavbar"
+    aria-controls="firstNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="firstNavbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active"><a class="nav-link" href="#perfil">Perfil</a></li>
+      <li class="nav-item active"><a class="nav-link" href="#experiencia">Experiencia</a></li>
+      <li class="nav-item active"><a class="nav-link" href="#educacion">Educacion y Distinciones</a></li>
+      <li class="nav-item active"><a class="nav-link" href="#skills">Hard & Soft Skills</a></li>
+      <li class="nav-item active"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="mailto: matsuda.m.kevin@gmail.com" target="blank"><i
+            class="fa-solid fa-envelope"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://github.com/devQuebin" target="blank"><i
+            class="fa-brands fa-github"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://www.linkedin.com/in/matsudamkevin/"
+          target="blank"><i class="fa-brands fa-linkedin"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://www.instagram.com/xquebin/?hl=en" target="blank"><i
+            class="fa-brands fa-instagram"></i></a>
+      </li>
+      <li class="nav-item pointer">
+        <button *ngIf="!logged()" type="button" class="btn btn-outline-success btn-sm" (click)="login()">LOGIN</button>>
+      </li>
+      <li class="nav-item pointer">
+        <button *ngIf="logged()" type="button" class="btn btn-outline-secondary btn-sm"
+          (click)="onLogout()">LOGOUT</button>>
+      </li>
+
+    </ul>
+  </div>
+
+</nav>

@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { user } from 'src/app/model/user.model';
+import { User } from 'src/app/model/user.model';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { UserService } from 'src/app/servicios/user.service';
 
 @Component({
@@ -8,11 +10,51 @@ import { UserService } from 'src/app/servicios/user.service';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  user: user = new user("","","","","");
-  constructor(public userService: UserService) { }
+  public user: User | undefined
+  public editUser: User | undefined;
+
+  constructor(public userService: UserService, 
+    public autenticacionService: AutenticacionService) { }
+
+    isloged = () => this.autenticacionService.loggedIn();
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(data =>{this.user=data})
+    this.getUser();
   }
 
-}
+  public getUser(): void {
+    this.userService.getUser().subscribe({
+      next: (Response: User) => {
+        this.user = Response;
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log('error');
+      }
+    })
+  }
+  public onOpenModal(mode: string, user?: User): void {
+    const container = document.getElementById('modal_container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+     
+    button.setAttribute('data-target', '#editUserModal');
+
+    container?.appendChild(button);
+    button.click();
+  }
+
+  public onUpdateUser(user: User): void{
+    this.editUser = user;
+    this.userService.updateUser(user).subscribe({
+      next: (response: User) => {
+        console.log(response);
+        this.getUser();
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log('error');
+      }
+    })
+  }
+  }

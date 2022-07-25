@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { user } from 'src/app/model/user.model';
+import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/servicios/user.service';
 
 
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/servicios/user.service';
 })
 
 export class EncabezadoComponent implements OnInit {
-  user: user = new user("","","","","");
+  public user: User | undefined;
   
   constructor(public userService: UserService) { }
 

@@ -1,3 +1,15 @@
 .pointer {
     cursor: pointer;
 }
+
+#logoap {
+    width: 110px;
+}
+a{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+img {
+    max-width: 100%;
+}
+

@@ -9,7 +9,6 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { ExpComponent } from './componentes/exp/exp.component';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { SkillsComponent } from './componentes/skills/skills.component';
-import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AutenticacionService } from './servicios/autenticacion.service';
+import { ProyectoComponent } from './componentes/proyecto/proyecto.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +27,10 @@ import { AutenticacionService } from './servicios/autenticacion.service';
     ExpComponent,
     EducacionComponent,
     SkillsComponent,
-    ContactoComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ProyectoComponent
     
     
   ],

@@ -12,7 +12,6 @@ export class ExperienciaService {
   }
   URL=`http://localhost:8080/`;
 
-
   constructor(private http: HttpClient ) { }
 
   public getExperiencia(): Observable<Experiencia[]>{

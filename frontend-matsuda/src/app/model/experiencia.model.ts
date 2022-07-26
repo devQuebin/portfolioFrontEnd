@@ -4,5 +4,5 @@ export interface Experiencia{
     fechainExp: number;
     fechafinExp: number;
     descExp: string;
-    imagenExp: string;
+    imgenExp: string;
 }

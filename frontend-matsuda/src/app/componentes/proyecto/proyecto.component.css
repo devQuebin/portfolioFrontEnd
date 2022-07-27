@@ -1,0 +1,51 @@
+h1 {
+    margin: 10px;
+}
+  h3,
+  h2,
+  h6 {
+    display: inline;
+  }
+  p {
+    color: rgb(141, 139, 139);
+    text-align: left;
+  }
+  img {
+    width: 300px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin: 10px;
+  }
+  .card {
+    flex-direction: column;    
+    max-width: 95%;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+  }
+ 
+  code {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .btn {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin: 5px;
+  }
+section {
+  margin: 10px;
+}

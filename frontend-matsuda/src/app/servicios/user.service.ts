@@ -16,6 +16,6 @@ export class UserService {
     return this.http.get<User>(this.URL+ `api/info/1`);
   }
     public updateUser(user: User):Observable<User>{
-    return this.http.put<User>(this.URL+`api/info/1`, user);
+    return this.http.put<User>(this.URL+`api/info/`, user);
   }
 }

@@ -17,6 +17,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AutenticacionService } from './servicios/autenticacion.service';
 import { ProyectoComponent } from './componentes/proyecto/proyecto.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ProyectoComponent } from './componentes/proyecto/proyecto.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    NgCircleProgressModule.forRoot({})
   ],
   providers: [AutenticacionService],
   bootstrap: [AppComponent]

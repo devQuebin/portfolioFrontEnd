@@ -5,7 +5,6 @@ import { Skills } from 'src/app/model/skills.model';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { SkillsService } from 'src/app/servicios/skills.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, } from '@angular/cdk/drag-drop';
-import { Proyecto } from 'src/app/model/proyecto.model';
 
 @Component({
   selector: 'app-skills',
@@ -97,7 +96,7 @@ export class SkillsComponent implements OnInit {
     })
   }
 
-  onDrop(event: CdkDragDrop<Proyecto[]>) {
+  onDrop(event: CdkDragDrop<Skills[]>) {
     if (this.autenticacionService.loggedIn()) {
       if (event.previousContainer === event.container) {
         moveItemInArray(

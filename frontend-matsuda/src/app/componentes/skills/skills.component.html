@@ -1,79 +1,284 @@
+<!--skills-->
+<div class="container-fluid">
+  <div id="skills" class="row">
+    <h1>Habilidades Duras y Blandas</h1>
+  
+   
+    <div
+      class="card"
+      id="main-container"
+      id="even"
+      cdkDropList
+      [cdkDropListData]="skillses"
+      cdkDropListConnectedTo="even"
+      (cdkDropListDropped)="onDrop($event)"
+      #educationList="cdkDropList"
+    >
+      <div class="row skill">
+        <div
+          *ngFor="let skills of skillses"
+          cdkDrag
+          [cdkDragData]="skills"
+          cdkDragPreviewContainer="parent"
+          class="text-center col-xs-8 col-sm-8 col-md-6 col-lg-3"
+        >
+          <div class="skillcircle" >
 
-<!--skills mias-->
-<!--<div class="container">
-    <section id="skills">
-      <h1>Hard and Soft Skills</h1>
-      <div class="container">
-        <div class="row">
-            <div class="col-2">
-                <h2>HARD SKILLS</h2>            
+            <button *ngIf="isloged()" type="button" (click)="onOpenModal ('edit', skills)" class="btn btn-primary"
+                  data-bs-toggle="modal" data-bs-target="#editSkillsModal">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+                <button *ngIf="isloged()" type="button" (click)="onOpenModal ('delete', skills)" class="btn btn-danger"
+                  data-bs-toggle="modal" data-bs-target="#deleteSkillsModal">
+                  <i class="fa fa-times"></i>
+                </button>
+          </div>
+          <div class="card-body titles">
+            <div class="card-title">
+              {{ skills.nombreSkills }}
+              <circle-progress
+                [percent]="skills.porcentaje"
+                [radius]="100"
+                [showUnits]="false"
+                [showImage]="true"
+                [imageHeight]="70"
+                [imageWidth]="70"
+                [showSubtitle]="true"
+                [titleFontSize]="'500px'"
+                [outerStrokeWidth]="10"
+                [innerStrokeWidth]="4"
+                [title]="skills.nombreSkills"
+                [imageSrc]="skills.fotoSkills"
+                [outerStrokeColor]="'black'"
+                [innerStrokeColor]="'grey'"
+                [animation]="true"
+                [animationDuration]="800"
+              ></circle-progress>
             </div>
-            <div class="col">
-                <div class="progress-bar-component">
-                  <div class="col-md-3">Skill label</div>
-                  <div class="progress col-md-9">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="10" 
-                    aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
-                  </div>
-                  <div class="progress blue">
-                    <span class="progress-left">
-                                      <span class="progress-bar"></span>
-                    </span>
-                    <span class="progress-right">
-                                      <span class="progress-bar"></span>
-                    </span>
-                    <div class="progress-value">90%</div>
-                  </div>
-                  <br>
-                </div>
-                <p class="h4">Paquete ADOBE</p>
-                <p>Nivel: Intermedio - Avanzado</p>
-                <p class="h4">HTML5</p>
-                <p>Nivel Basico</p>
-                <p class="h4">CSS + Bootstrap</p>
-                <p>Nivel Basico</p>
-                <p class="h4">Javascript</p>
-                <p>Nivel Basico</p>
-                <p class="h4">Typescript</p>
-                <p>Nivel Basico</p>
-                <p class="h4">Angular</p>
-                <p>Nivel Basico</p>
-                <p class="h4">MySQL</p>
-                <p>Nivel Basico</p>
-                <p class="h4">Java</p>
-                <p>Nivel Basico</p>
-                <p class="h4">SpringBoot</p>
-                <p>Nivel Basico</p>
-                <p class="h4">Ruby</p>
-                <p>Nivel Basico</p>
-            </div>
+          </div>
         </div>
       </div>
-  
-          <div class="container">
-            <div class="row">
-                <div class="col-2">
-                    <h2>SOFT SKILLS</h2>            
-                </div>
-                <div class="col">
-                  <div class="progress-bar-component">
-                    <div class="col-md-3">Skill label</div>
-                    <div class="progress col-md-9">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" 
-                      aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                    </div>
-                    <br>
-                    <p class="h4">Trabajo en equipos multidisciplinarios</p>
-                    <p>Trabajo colaborativo con personas de distintas disciplinas para ampliar la vision del proyecto</p>
-                    <p class="h4">Coordinacion y Liderazgo</p>
-                    <p>Trabajo colaborativo con personas de distintas disciplinas para ampliar la vision del proyecto</p>
-                    <p class="h4">Autonomia</p>
-                    <p>Trabajo colaborativo con personas de distintas disciplinas para ampliar la vision del proyecto</p>
-                    <p class="h4">Comunicacion</p>
-                    <p>Trabajo colaborativo con personas de distintas disciplinas para ampliar la vision del proyecto</p>
-                    <p class="h4">Compromiso</p>
-                    <p>Trabajo colaborativo con personas de distintas disciplinas para ampliar la vision del proyecto</p>
-                </div>
+    </div>
+<!--boton a;adir-->
+    <div class="text-center">
+      <button *ngIf="isloged()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSkillsModal">
+        Añadir Skill
+      </button>
+
+    </div>
+    
+    <!-- Add Skill Modal -->
+    <div
+      class="modal fade"
+      id="addSkillsModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addSkillsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addSkillsModalLabel">Agregar Skill</h5>
+          </div>
+          <div class="modal-body">
+            <form #addForm="ngForm" (ngSubmit)="onAddSkills(addForm)">
+              <div class="form-group">
+                <label for="nombreSkills">Skill</label>
+                <input
+                  type="text"
+                  ngModel
+                  name="nombreSkills"
+                  class="form-control"
+                  id="nombreSkills"
+                  placeholder="Titulo"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="porcentaje">Porcentaje</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="5"
+                  ngModel
+                  name="porcentaje"
+                  class="form-control"
+                  id="porcentaje"
+                  placeholder="porcentaje"
+                  required
+                />
+              </div>
+    
+              <div class="form-group">
+                <label for="fotoSkills">URL de la imagen</label>
+                <input
+                  type="text"
+                  ngModel
+                  name="fotoSkills"
+                  class="form-control"
+                  id="fotoSkills"
+                  placeholder="URL de la imagen"
+                  required
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cerrar
+                </button>
+                <button
+                  [disabled]="addForm.invalid"
+                  type="submit"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                >
+                  Guardar Cambios
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Edit skill modal -->
+    <div
+      class="modal fade"
+      id="editSkillsModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="editSkillsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editSkillsModalLabel">
+              Editar Skill {{ editSkills?.nombreSkills }}
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form #editForm="ngForm">
+              <div class="form-group">
+                <label for="nombreSkills">Titulo</label>
+                <input
+                  type="text"
+                  ngModel="{{ editSkills?.nombreSkills }}"
+                  name="nombreSkills"
+                  class="form-control"
+                  id="nombreSkills"
+                  aria-describedby="emailHelp"
+                  placeholder="Nombre Skill"
+                />
+              </div>
+              <input
+                type="hidden"
+                ngModel="{{ editSkills?.idSkills }}"
+                name="idSkills"
+                class="form-control"
+                id="idSkills"
+                placeholder=""
+              />
+    
+              <div class="form-group">
+                <label for="porcentaje">Porcentaje</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="5"
+                  ngModel="{{ editSkills?.porcentaje }}"
+                  name="porcentaje"
+                  class="form-control"
+                  id="porcentaje"
+                  placeholder="Porcentaje"
+                />
+              </div>
+    
+              <div class="form-group">
+                <label for="fotoSkills">URL de la imagen</label>
+                <input
+                  type="text"
+                  ngModel="{{ editSkills?.fotoSkills }}"
+                  name="fotoSkills"
+                  class="form-control"
+                  id="fotoSkills"
+                  placeholder="URL de la imagen"
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  id="3"
+                  data-bs-ismiss="modal"
+                  class="btn btn-secondary"
+                >
+                  Cerrar
+                </button>
+                <button
+                  (click)="onUpdateSkills(editForm.value)"
+                  data-bs-dismiss="modal"
+                  class="btn btn-primary"
+                >
+                  Guardar Cambios
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Delete skill modal -->
+    <div
+      class="modal fade"
+      id="deleteSkillsModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="deleteSkillsModelLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteSkillsModelLabel">Borrar Skill</h5>
+          </div>
+          <div class="modal-body">
+            <p>
+              Está seguro que desea borrar
+              {{ deleteSkills?.nombreSkills }}?
+            </p>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                No
+              </button>
+              <button
+                (click)="onDeleteSkills(deleteSkills!.idSkills)"
+                class="btn btn-danger"
+                data-dismiss="modal"
+              >
+                Si
+              </button>
             </div>
-            </div>
-    </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Notification for no skills -->
+    <div *ngIf="skillses?.length==0" class="col-lg12 col-md=12 col-xl-12">
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">No hay Skills</h4>
+        <p>Skills no encontradas.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

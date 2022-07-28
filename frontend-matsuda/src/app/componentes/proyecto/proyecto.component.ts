@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { Proyecto } from 'src/app/model/proyecto.model';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { ProyectoService } from 'src/app/servicios/proyecto.service';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-proyecto',
@@ -13,7 +12,6 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem, } from '@angular/cdk/d
 })
 export class ProyectoComponent implements OnInit {
   public proyectos: Proyecto[] = [];
-  public proyectos2 = this.proyectoService.getProyecto();
   public editProyecto: Proyecto | undefined;
   public deleteProyecto: Proyecto | undefined;
 
@@ -95,25 +93,5 @@ export class ProyectoComponent implements OnInit {
 
     })
   }
-
-  onDrop(event: CdkDragDrop<Proyecto[]>) {
-    if (this.autenticacionService.loggedIn()) {
-      if (event.previousContainer === event.container) {
-        moveItemInArray(
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex
-        );
-      } else {
-        transferArrayItem(
-          event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex
-        );
-      }
-    }
-  }
-
 
 }

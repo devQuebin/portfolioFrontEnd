@@ -1,3 +1,7 @@
+h1 {
+  margin: 10px;
+  font-family: 'Roboto', sans-serif;
+}
 .edu {
     padding: 10px;
   }
@@ -6,10 +10,12 @@
   h6 {
     color: rgb(216, 216, 216);
     display: inline;
+    font-family: 'Roboto', sans-serif;
   }
   p {
     color: rgb(141, 139, 139);
     text-align: left;
+    font-family: 'Roboto', sans-serif;
   }
   img {
     border-radius: 10px;
@@ -46,6 +52,7 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     margin: 5px;
+    font-family: 'Roboto', sans-serif;
   }
 section {
   margin: 10px;

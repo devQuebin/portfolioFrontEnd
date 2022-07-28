@@ -1,22 +1,269 @@
 <div class="container-fluid">
     <h1 id="proyectos">Proyectos</h1>
+
+<!-- tarjetas-->
 <div class="row">
 
     <div class="text-center col-sm-4 col-md-4 col-lg-4">
-        <div class="card">
-            <img src="../../../assets/github-logo.png" alt="imgProy" class="card-img-top-center">
+
+        <div class="card" *ngFor="let proyecto of proyectos">
+          
+            <img class="mx-auto d-block" src="{{proyecto.imagenProy}}">
+
             <div class="card-body">
-                <h5>TITULO PROYEcTO</h5>
-                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit itaque doloribus
-                    repellat, placeat ratione praesentium? Culpa iusto quam placeat deleniti quod at, eos eveniet
-                    aliquam officiis debitis laboriosam illum sunt.</p>
+
+                <a href="{{proyecto.linkProy}}" class="text-center">{{proyecto.tituloProy}}</a>
+                <p class="text-center">{{proyecto.descProy}}</p>   
+                
+                <a
+            *ngIf="isloged()"
+            (click)="onOpenModal('edit', proyecto)"
+            class="btn btn-primary tooltips"
+            data-placement="top"
+            data-toggle="tooltip"
+            data-original-title="Edit"
+            ><i class="fa fa-pencil"></i>
+          </a>
+          <button
+            
+            (click)="onOpenModal('delete', proyecto)"
+            class="btn btn-secondary tooltips"
+            data-placement="top"
+            data-toggle="tooltip"
+            data-original-title="Delete"
+            ><i class="fa fa-times"></i
+          ></button>
             </div>
+                     
         </div>
+
     </div>
 
     
    
 </div>
+
+<!-- Add Project Modal -->
+<div
+  class="modal fade"
+  id="addProyectoModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="addProyectoModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addProyectoModalLabel">Agregar Proyecto</h5>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddProyecto(addForm)">
+          <div class="form-group">
+            <label for="tituloProy">Titulo del Proyecto</label>
+            <input
+              type="text"
+              ngModel
+              name="tituloProy"
+              class="form-control"
+              id="tituloProy"
+              placeholder="Titulo del proyecto"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="linkProy">Link del proyecto</label>
+            <input
+              type="text"
+              ngModel
+              name="linkProy"
+              class="form-control"
+              id="linkProy"
+              placeholder="link"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="descProy">Descripción Proyecto</label>
+            <input
+              type="text"
+              ngModel
+              name="descProy"
+              class="form-control"
+              id="descProy"
+              placeholder="Descripción"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="imagenProy">URL de la imagen</label>
+            <input
+              type="text"
+              ngModel
+              name="imagenProy"
+              class="form-control"
+              id=" imagenProy"
+              placeholder="URL de la imagen"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="add-project-form"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              [disabled]="addForm.invalid"
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit project modal -->
+<div
+  class="modal fade"
+  id="editProyectoModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editProyectoModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateProyectoModalLabel">
+          Editar Proyecto {{ editProyecto?.tituloProy }}
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Titulo del Proyecto</label>
+            <input
+              type="text"
+              ngModel="{{ editProyecto?.tituloProy }}"
+              name="tituloProy"
+              class="form-control"
+              id="tituloProy"
+              aria-describedby="emailHelp"
+              placeholder="Titulo"
+            />
+          </div>
+          <input
+            type="hidden"
+            ngModel="{{ editProyecto?.idProy }}"
+            name="idProy"
+            class="form-control"
+            id="idProy"
+            placeholder=""
+          />
+          <div class="form-group">
+            <label for="descProy">Descripción del proyecto</label>
+            <input
+              type="text"
+              ngModel="{{ editProyecto?.descProy }}"
+              name="descProy"
+              class="form-control"
+              id="descProy"
+              placeholder="descripción"
+            />
+          </div>
+          <div class="form-group">
+            <label for="linkProy">Link del proyecto</label>
+            <input
+              type="text"
+              ngModel="{{ editProyecto?.linkProy }}"
+              name="linkProy"
+              class="form-control"
+              id="linkProy"
+              placeholder="Fecha Inicio"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="imagenProy">URL de la imagen</label>
+            <input
+              type="text"
+              ngModel="{{ editProyecto?.imagenProy }}"
+              name="imagenProy"
+              class="form-control"
+              id="imagenProy"
+              placeholder="URL de la imagen"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id=""
+              data-bs-dismiss="modal"
+              class="btn btn-secondary"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="onUpdateProyecto(editForm.value)"
+              data-bs-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete project modal -->
+<div
+  class="modal fade"
+  id="deleteProyectoModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteProyectoModelLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteProyectoModelLabel">Borrar Proyecto</h5>
+      </div>
+      <div class="modal-body">
+        <p style="color: rgb(255, 255, 255)">
+          Está seguro que desea borrar
+          {{ deleteProyecto?.tituloProy }}?
+        </p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            No
+          </button>
+          <button
+            (click)="onDeleteProyecto(deleteProyecto!.idProy)"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+          >
+            Si
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!--boton añadir-->
 <div class="text-center">

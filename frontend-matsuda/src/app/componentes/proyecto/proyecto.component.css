@@ -1,29 +1,31 @@
 h1 {
     margin: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
 }
   h3,
   h2,
   h6 {
     display: inline;
+    font-family: 'Roboto', sans-serif;
   }
   p {
     color: rgb(141, 139, 139);
     text-align: left;
+    font-family: 'Roboto', sans-serif;
   }
   img {
     width: 300px;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
     margin: 10px;
   }
   .card {
     flex-direction: column;    
     max-width: 95%;
-    border-radius: 5px;
-    margin: auto;
+    border-radius: 5px;    
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 20px;
@@ -31,6 +33,7 @@ h1 {
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
   }
  
   code {
@@ -45,6 +48,7 @@ h1 {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     margin: 5px;
+    font-family: 'Roboto', sans-serif;
   }
 section {
   margin: 10px;

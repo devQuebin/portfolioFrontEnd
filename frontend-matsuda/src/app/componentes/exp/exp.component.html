@@ -4,9 +4,17 @@
     <section id="experiencia">
       <h1>Experiencia Laboral</h1>
   
-      <div class="container-fluid" id="even" cdkDropList [cdkDropListData]="experiencias" cdkDropListConnectedTo="even"
-        (cdkDropListDropped)="onDrop($event)" #experienciaList="cdkDropList" class="row mt-2">
-        <div class="card skill shadow col-lg-12" *ngFor="let experiencia of experiencias" cdkDrag [cdkDragData]="experiencia"
+      <div class="container-fluid" 
+      id="even" 
+      cdkDropList [cdkDropListData]="experiencias" 
+      cdkDropListConnectedTo="even"
+        (cdkDropListDropped)="onDrop($event)" 
+        #experienciaList="cdkDropList" 
+        class="row mt-2">
+
+        <div class="card skill shadow col-lg-12" 
+        *ngFor="let experiencia of experiencias" 
+        cdkDrag [cdkDragData]="experiencia"
           cdkDragPreviewContainer="parent">
           <div>
             <div>

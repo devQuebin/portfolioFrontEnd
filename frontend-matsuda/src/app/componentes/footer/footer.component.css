@@ -1,3 +1,16 @@
 p {
     color: white;
+    font-family: 'Roboto', sans-serif;
 }
+a{
+    font-family: 'Roboto', sans-serif;
+}
+.btn {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin: 5px;
+    
+  }

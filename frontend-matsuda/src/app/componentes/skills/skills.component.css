@@ -1,7 +1,11 @@
 h1 {
     margin: 10px;
+    font-family: 'Roboto', sans-serif;
 }
-
+.card-title{
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+}
 
   .skill {
     max-width: 100%;
@@ -18,6 +22,7 @@ h1 {
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
   }
  
   .modal-footer {

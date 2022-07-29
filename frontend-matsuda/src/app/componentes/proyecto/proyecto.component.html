@@ -267,7 +267,7 @@
 
 <!--boton añadir-->
 <div class="text-center">
-    <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProyectoModal">
+    <button *ngIf="isloged()"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProyectoModal">
       Añadir Proyecto
     </button>
   </div>

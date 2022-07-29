@@ -10,7 +10,7 @@ export class ExperienciaService {
   editExperiencia(value: any) {
     throw new Error('Method not implemented.');
   }
-  URL=`http://localhost:8080/`;
+  URL=`https://portfoliobackmatsuda.herokuapp.com/`;
 
   constructor(private http: HttpClient ) { }
 

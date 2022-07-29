@@ -8,7 +8,7 @@ import { User } from '../model/user.model';
 })
 export class UserService {
  
-  URL=`http://localhost:8080/`;
+  URL=`https://portfoliobackmatsuda.herokuapp.com/`;
 
   constructor(private http: HttpClient) { }
 

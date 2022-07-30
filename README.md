@@ -38,6 +38,8 @@ Navegacion entre distintos usuarios.
 Mejorar estilos generales de la app y tener una identidad propia.
 Hacer un testeo con usuarios finales para indagar sobre el UX y el UI.
 Optimizar recursos, posiblemente centralizar los modales en un solo componente y este ser utilizado por otros componentes.
+RESPONSIVE: si bien la app es responsible, entiende que no esta armado prolijamente.
+MODAL CRUD: algunos modales no andan del todo bien (algunos botones de cerrar no cierran el modal, hay que clickear fuera de la ventana, algunos al guardar cambios siguen abiertos).
 
 
 

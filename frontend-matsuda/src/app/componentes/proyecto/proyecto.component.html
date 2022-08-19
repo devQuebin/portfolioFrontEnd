@@ -15,22 +15,22 @@
                 <a href="{{proyecto.linkProy}}" class="text-center">{{proyecto.tituloProy}}</a>
                 <p class="text-center">{{proyecto.descProy}}</p>   
                 
-                <a
+                <button
             *ngIf="isloged()"
+            type="button"
             (click)="onOpenModal('edit', proyecto)"
-            class="btn btn-primary tooltips"
-            data-placement="top"
-            data-toggle="tooltip"
-            data-original-title="Edit"
+            class="btn btn-primary"
+            data-bs-toggle="modal" 
+            data-bs-target="#editProyectoModal"
             ><i class="fa fa-pencil"></i>
-          </a>
+            </button>
           <button
-            
+          *ngIf="isloged()"
+          type="button"
             (click)="onOpenModal('delete', proyecto)"
-            class="btn btn-secondary tooltips"
-            data-placement="top"
-            data-toggle="tooltip"
-            data-original-title="Delete"
+            class="btn btn-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteProyectoModal"
             ><i class="fa fa-times"></i
           ></button>
             </div>
@@ -243,7 +243,7 @@
         <h5 class="modal-title" id="deleteProyectoModelLabel">Borrar Proyecto</h5>
       </div>
       <div class="modal-body">
-        <p style="color: rgb(255, 255, 255)">
+        <p>
           Está seguro que desea borrar
           {{ deleteProyecto?.tituloProy }}?
         </p>
